@@ -13,7 +13,7 @@ import { toast } from "sonner";
 import { Checkbox } from "./ui/checkbox";
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { Delete, Loader2, Trash } from "lucide-react"
+import { Loader2, Trash } from "lucide-react"
 import { format } from "date-fns";
 
 type Task = {
@@ -45,7 +45,6 @@ export default function TableData({ tasks }: { tasks: Task[] }) {
                 <TableRow>
                     <TableHead></TableHead>
                     <TableHead className="w-[100px]">Title</TableHead>
-
                     <TableHead>Created At</TableHead>
                     <TableHead className="text-right">Updated At</TableHead>
                     <TableHead className="text-right">Actions</TableHead>
