@@ -44,7 +44,7 @@ export default  function TaskForm() {
     return (
         <div className="flex w-full flex-col items-center justify-between ">
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex items-center gap-2 flex-col" >
                     <FormField
                         control={form.control}
                         name="task"
@@ -58,7 +58,7 @@ export default  function TaskForm() {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit">Submit</Button>
+                    <Button variant={'outline'} className="w-full" type="submit">Submit</Button>
                 </form>
             </Form>
         </div>
