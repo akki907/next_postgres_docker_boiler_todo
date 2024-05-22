@@ -60,7 +60,7 @@ export default function TableData({ tasks }: { tasks: Task[] }) {
                                 onCheckedChange={(e) => handleTaskCompleted(task)}
                             />
                         </TableCell>
-                        <TableCell className={`"transition ${task.completed && 'line-through'}`}>{task.title}</TableCell>
+                        <TableCell className={`transition ${task.completed && 'line-through'}`}>{task.title}</TableCell>
                         <TableCell>{format(new Date(task.createdAt), "MM-dd-yyyy, h:mm aaa")}</TableCell>
                         <TableCell className="text-right">{
                             format(new Date(task.updatedAt), "MM-dd-yyyy, h:mm aaa")
