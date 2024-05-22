@@ -24,18 +24,18 @@ type Task = {
     updatedAt: Date;
 }
 
-export default async function TableData({ tasks }: { tasks: Task[] }) {
+export default function TableData({ tasks }: { tasks: Task[] }) {
     const [loading, setloading] = useState(false)
-    const handleDelete = async (id: string) => {
+    const handleDelete =  (id: string) => {
         setloading(true)
-        await deleteTask(id)
+        deleteTask(id)
         toast("Task has been deleted.")
         setloading(false)
     }
 
-    const handleTaskCompleted = async (task: Task) => {
+    const handleTaskCompleted =  (task: Task) => {
         setloading(true)
-        await updateTask(task.id, !task.completed)
+        updateTask(task.id, !task.completed)
         setloading(false)
     }
 
