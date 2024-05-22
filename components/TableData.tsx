@@ -14,6 +14,7 @@ import { Checkbox } from "./ui/checkbox";
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Delete, Loader2, Trash } from "lucide-react"
+import { format } from "date-fns";
 
 type Task = {
     id: string;
@@ -60,14 +61,17 @@ export default async function TableData({ tasks }: { tasks: Task[] }) {
                                 onCheckedChange={(e) => handleTaskCompleted(task)}
                             />
                         </TableCell>
-                        <TableCell>{task.title}</TableCell>
-                        <TableCell>{task.createdAt.toDateString()}</TableCell>
-                        <TableCell className="text-right">{task.updatedAt.toDateString()}</TableCell>
+                        <TableCell className={`"transition ${task.completed && 'line-through'}`}>{task.title}</TableCell>
+                        <TableCell>{   format(new Date(task.createdAt), "MM-dd-yyyy, h:mm aaa")}</TableCell>
+                        <TableCell className="text-right">{
+                        format(new Date(task.updatedAt), "MM-dd-yyyy, h:mm aaa")
+
+                        }</TableCell>
                         <TableCell className="text-right">
                             <Button disabled={loading} variant={'destructive'} onClick={() => {
                                 handleDelete(task.id)
                             }} >
-                                {!loading ?<Trash className="h-4 w-4" />: <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                                {!loading ? <Trash className="h-4 w-4" /> : <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                             </Button>
                         </TableCell>
                     </TableRow>

@@ -32,6 +32,7 @@ export async function updateTask(id: string, completed: boolean) {
         },
         data: {
             completed,
+            updatedAt: new Date(),
         },
     })
 
