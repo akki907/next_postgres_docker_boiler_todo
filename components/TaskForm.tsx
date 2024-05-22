@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button"
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -55,9 +54,6 @@ export default  function TaskForm() {
                                 <FormControl>
                                     <Input placeholder="Task" {...field} />
                                 </FormControl>
-                                <FormDescription>
-                                    This is your task display name.
-                                </FormDescription>
                                 <FormMessage />
                             </FormItem>
                         )}

@@ -14,24 +14,22 @@ export default async function Home() {
   const tasks = await prisma.task.findMany()
 
   return (
-    <main className="flex h-full gap-10  flex-col items-center justify-between p-24">
-    <TaskForm />
-
+    <main className="flex flex-col items-center px-20  pt-40">
+      <TaskForm />
       <Table>
-        <TableCaption>A list of your recent Tasks.</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Task</TableHead>
+            <TableHead className="w-[100px]">Title</TableHead>
             <TableHead>Status</TableHead>
-            <TableHead>Method</TableHead>
-            <TableHead className="text-right">Amount</TableHead>
+            <TableHead>Created At</TableHead>
+            <TableHead className="text-right">Updated At</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {tasks.map((task) => (
             <TableRow key={task.id}>
               <TableCell>{task.title}</TableCell>
-              <TableCell>{task.completed}</TableCell>
+              <TableCell>{`${task.completed ? 'completed' : 'uncompleted'}`}</TableCell>
               <TableCell>{task.createdAt.toDateString()}</TableCell>
               <TableCell className="text-right">{task.updatedAt.toDateString()}</TableCell>
             </TableRow>
