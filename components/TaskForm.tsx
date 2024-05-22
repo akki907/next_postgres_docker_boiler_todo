@@ -58,7 +58,7 @@ export default  function TaskForm() {
                             </FormItem>
                         )}
                     />
-                    <Button variant={'outline'} className="w-full" type="submit">Submit</Button>
+                    <Button  className="w-full" type="submit">Submit</Button>
                 </form>
             </Form>
         </div>

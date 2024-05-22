@@ -26,14 +26,14 @@ type Task = {
 
 export default function TableData({ tasks }: { tasks: Task[] }) {
     const [loading, setloading] = useState(false)
-    const handleDelete =  (id: string) => {
+    const handleDelete = (id: string) => {
         setloading(true)
         deleteTask(id)
         toast("Task has been deleted.")
         setloading(false)
     }
 
-    const handleTaskCompleted =  (task: Task) => {
+    const handleTaskCompleted = (task: Task) => {
         setloading(true)
         updateTask(task.id, !task.completed)
         setloading(false)
@@ -61,10 +61,9 @@ export default function TableData({ tasks }: { tasks: Task[] }) {
                             />
                         </TableCell>
                         <TableCell className={`"transition ${task.completed && 'line-through'}`}>{task.title}</TableCell>
-                        <TableCell>{   format(new Date(task.createdAt), "MM-dd-yyyy, h:mm aaa")}</TableCell>
+                        <TableCell>{format(new Date(task.createdAt), "MM-dd-yyyy, h:mm aaa")}</TableCell>
                         <TableCell className="text-right">{
-                        format(new Date(task.updatedAt), "MM-dd-yyyy, h:mm aaa")
-
+                            format(new Date(task.updatedAt), "MM-dd-yyyy, h:mm aaa")
                         }</TableCell>
                         <TableCell className="text-right">
                             <Button disabled={loading} variant={'destructive'} onClick={() => {
