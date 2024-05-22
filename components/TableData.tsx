@@ -13,7 +13,7 @@ import { toast } from "sonner";
 import { Checkbox } from "./ui/checkbox";
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { Delete ,Trash} from "lucide-react"
+import { Delete, Loader2, Trash } from "lucide-react"
 
 type Task = {
     id: string;
@@ -66,7 +66,9 @@ export default async function TableData({ tasks }: { tasks: Task[] }) {
                         <TableCell className="text-right">
                             <Button disabled={loading} variant={'destructive'} onClick={() => {
                                 handleDelete(task.id)
-                            }} ><Trash className="h-4 w-4"/></Button>
+                            }} >
+                                {!loading ?<Trash className="h-4 w-4" />: <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                            </Button>
                         </TableCell>
                     </TableRow>
                 ))}
