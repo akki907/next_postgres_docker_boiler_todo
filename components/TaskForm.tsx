@@ -58,7 +58,7 @@ export default  function TaskForm() {
                             </FormItem>
                         )}
                     />
-                    <Button  className="w-full" type="submit">Submit</Button>
+                    <Button  className="w-full dark:border-white dark:border-2" type="submit">Submit</Button>
                 </form>
             </Form>
         </div>
