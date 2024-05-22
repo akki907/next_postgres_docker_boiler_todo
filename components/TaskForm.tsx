@@ -15,7 +15,7 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import addTask from "@/actions/task"
+import {addTask} from "@/actions/task"
 
 const formSchema = z.object({
     task: z.string().min(2, {
