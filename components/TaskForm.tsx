@@ -52,7 +52,7 @@ export default  function TaskForm() {
                             <FormItem>
                                 <FormLabel>Task</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Task" {...field} />
+                                    <Input className="dark:text-black" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
