@@ -11,6 +11,9 @@ import {
 import { deleteTask, updateTask } from "@/actions/task";
 import { toast } from "sonner";
 import { Checkbox } from "./ui/checkbox";
+import { useState } from "react";
+import { Button } from "./ui/button";
+import { Delete ,Trash} from "lucide-react"
 
 type Task = {
     id: string;
@@ -21,13 +24,18 @@ type Task = {
 }
 
 export default async function TableData({ tasks }: { tasks: Task[] }) {
+    const [loading, setloading] = useState(false)
     const handleDelete = async (id: string) => {
+        setloading(true)
         await deleteTask(id)
         toast("Task has been deleted.")
+        setloading(false)
     }
 
-    const handleTaskCompleted = async (task:Task) => {
-       await updateTask(task.id, !task.completed)
+    const handleTaskCompleted = async (task: Task) => {
+        setloading(true)
+        await updateTask(task.id, !task.completed)
+        setloading(false)
     }
 
     return (
@@ -47,17 +55,18 @@ export default async function TableData({ tasks }: { tasks: Task[] }) {
                     <TableRow key={task.id}>
                         <TableCell>
                             <Checkbox
+                                disabled={loading}
                                 checked={task.completed}
-                                onCheckedChange={(e) => handleTaskCompleted( task)}
+                                onCheckedChange={(e) => handleTaskCompleted(task)}
                             />
                         </TableCell>
                         <TableCell>{task.title}</TableCell>
                         <TableCell>{task.createdAt.toDateString()}</TableCell>
                         <TableCell className="text-right">{task.updatedAt.toDateString()}</TableCell>
                         <TableCell className="text-right">
-                            <button className="text-red-500" onClick={() => {
+                            <Button disabled={loading} variant={'destructive'} onClick={() => {
                                 handleDelete(task.id)
-                            }} >Delete</button>
+                            }} ><Trash className="h-4 w-4"/></Button>
                         </TableCell>
                     </TableRow>
                 ))}
