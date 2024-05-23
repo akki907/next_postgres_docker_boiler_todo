@@ -15,6 +15,7 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { Loader2, Trash } from "lucide-react"
 import { format } from "date-fns";
+import { dateFormat } from "@/lib/constants";
 
 type Task = {
     id: string;
@@ -22,6 +23,7 @@ type Task = {
     completed: boolean;
     createdAt: Date;
     updatedAt: Date;
+    description: string;
 }
 
 export default function TableData({ tasks }: { tasks: Task[] }) {
@@ -44,9 +46,11 @@ export default function TableData({ tasks }: { tasks: Task[] }) {
             <TableHeader>
                 <TableRow>
                     <TableHead></TableHead>
-                    <TableHead className="w-[100px]">Title</TableHead>
+                    <TableHead >Title</TableHead>
+                    <TableHead >Description</TableHead>
+
                     <TableHead>Created At</TableHead>
-                    <TableHead className="text-right">Updated At</TableHead>
+                    <TableHead >Updated At</TableHead>
                     <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
             </TableHeader>
@@ -61,9 +65,11 @@ export default function TableData({ tasks }: { tasks: Task[] }) {
                             />
                         </TableCell>
                         <TableCell className={`transition ${task.completed && 'line-through'}`}>{task.title}</TableCell>
-                        <TableCell>{format(new Date(task.createdAt), "MM-dd-yyyy, h:mm aaa")}</TableCell>
-                        <TableCell className="text-right">{
-                            format(new Date(task.updatedAt), "MM-dd-yyyy, h:mm aaa")
+                        <TableCell>{task.description}</TableCell>
+
+                        <TableCell>{format(new Date(task.createdAt), dateFormat)}</TableCell>
+                        <TableCell >{
+                            format(new Date(task.updatedAt), dateFormat)
                         }</TableCell>
                         <TableCell className="text-right">
                             <Button disabled={loading} variant={'destructive'} onClick={() => {

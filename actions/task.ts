@@ -9,6 +9,7 @@ export async function addTask(form: FormDataType) {
         data: {
             title: form.task,
             completed: false,
+            description: form.description,
         },
     })
 
