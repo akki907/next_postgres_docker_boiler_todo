@@ -49,7 +49,6 @@ export default function TableData({ tasks }: { tasks: Task[] }) {
                     <TableHead >Title</TableHead>
                     <TableHead >Description</TableHead>
 
-                    <TableHead>Created At</TableHead>
                     <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
             </TableHeader>
@@ -66,7 +65,6 @@ export default function TableData({ tasks }: { tasks: Task[] }) {
                         <TableCell className={`transition ${task.completed && 'line-through'}`}>{task.title}</TableCell>
                         <TableCell>{task.description}</TableCell>
 
-                        <TableCell>{format(new Date(task.createdAt), dateFormat)}</TableCell>
                         <TableCell className="text-right">
                             <Button disabled={loading} variant={'destructive'} onClick={() => {
                                 handleDelete(task.id)
