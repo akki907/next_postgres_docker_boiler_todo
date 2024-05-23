@@ -23,7 +23,7 @@ type Task = {
     completed: boolean;
     createdAt: Date;
     updatedAt: Date;
-    description: string;
+    description: string | null;
 }
 
 export default function TableData({ tasks }: { tasks: Task[] }) {
@@ -50,7 +50,6 @@ export default function TableData({ tasks }: { tasks: Task[] }) {
                     <TableHead >Description</TableHead>
 
                     <TableHead>Created At</TableHead>
-                    <TableHead >Updated At</TableHead>
                     <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
             </TableHeader>
@@ -68,9 +67,6 @@ export default function TableData({ tasks }: { tasks: Task[] }) {
                         <TableCell>{task.description}</TableCell>
 
                         <TableCell>{format(new Date(task.createdAt), dateFormat)}</TableCell>
-                        <TableCell >{
-                            format(new Date(task.updatedAt), dateFormat)
-                        }</TableCell>
                         <TableCell className="text-right">
                             <Button disabled={loading} variant={'destructive'} onClick={() => {
                                 handleDelete(task.id)

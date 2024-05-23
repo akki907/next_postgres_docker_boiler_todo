@@ -9,7 +9,7 @@ export default async function Home() {
   });
 
   return (
-    <main className="flex flex-col items-center sm:px-28 sm:pt-40 px-0  gap-10 pt-10">
+    <main className="flex flex-col items-center sm:px-28 sm:pt-40 px-2  gap-10 pt-10">
       <TaskForm />
       <TableData tasks={tasks} />
     </main>
